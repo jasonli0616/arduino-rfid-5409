@@ -121,6 +121,7 @@ class GUI(tkinter.Tk):
 
                 else:
                     keyboard.write(student_id)
+                    keyboard.press_and_release("enter")
 
     def __ask_student_id(self, db, uid):
         """
