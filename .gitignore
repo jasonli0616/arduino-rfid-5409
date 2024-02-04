@@ -1,5 +1,15 @@
-# Created by https://www.toptal.com/developers/gitignore/api/python,platformio,macos
-# Edit at https://www.toptal.com/developers/gitignore?templates=python,platformio,macos
+# Created by https://www.toptal.com/developers/gitignore/api/python,platformio,database,macos
+# Edit at https://www.toptal.com/developers/gitignore?templates=python,platformio,database,macos
+
+### Database ###
+*.accdb
+*.db
+*.dbf
+*.mdb
+*.pdb
+*.sqlite3
+*.db-shm
+*.db-wal
 
 ### macOS ###
 # General
@@ -213,4 +223,4 @@ poetry.toml
 # LSP config files
 pyrightconfig.json
 
-# End of https://www.toptal.com/developers/gitignore/api/python,platformio,macos
+# End of https://www.toptal.com/developers/gitignore/api/python,platformio,database,macos

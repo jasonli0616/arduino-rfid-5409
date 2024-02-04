@@ -8,31 +8,39 @@ Adafruit_PN532 nfc(PN532_IRQ, PN532_RESET);
 
 void setup() {
 
-  Serial.begin(115200);
+  Serial.begin(9600);
 
-  // Set up reader
-  nfc.begin();
-  if (!nfc.getFirmwareVersion()) {
+  while (true) {
+
+    // Set up reader
+    nfc.begin();
+    if (nfc.getFirmwareVersion()) {
+      // Success
+      break;
+    }
+
     Serial.println("ERROR: Didn't find PN532 board.");
-    while (true) {} // Stop program
+
   }
 
-  Serial.println("READY");
+  pinMode(LED_BUILTIN, OUTPUT);
+  digitalWrite(LED_BUILTIN, LOW);
 
 }
 
 void loop() {
+  Serial.println("READY");
 
   uint8_t success;
   uint8_t uid[] = { 0, 0, 0, 0, 0, 0, 0 };
   uint8_t uidLength;
 
-  success = nfc.readPassiveTargetID(PN532_MIFARE_ISO14443A, uid, &uidLength);
+  success = nfc.readPassiveTargetID(PN532_MIFARE_ISO14443A, uid, &uidLength, 500);
 
   if (success) {
 
     // Print UID
-    Serial.print("SUCCESS: ");
+    Serial.print("SCAN: ");
     for (uint8_t i = 0; i < uidLength; i++) {
       Serial.print(uid[i], HEX);
       Serial.print(" ");
