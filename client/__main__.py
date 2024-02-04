@@ -1,4 +1,4 @@
 from . import gui
 
-gui = gui.GUI()
-gui.mainloop()
+app = gui.GUI()
+app.mainloop()
